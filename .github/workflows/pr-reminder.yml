@@ -1,8 +1,12 @@
-name: PR Reminder
+name: Run Staging Migration Reminder
 
 on:
   pull_request:
+    branches:
+      - main
     types: [closed]
+    paths:
+      - '*.js'
 
 jobs:
   merge_job:
@@ -15,4 +19,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: 'Remember!'
+          msg: 'Remember to run the migration file against staging! `(cd src/models && npx sequelize-cli db:migrate --env staging)`'
