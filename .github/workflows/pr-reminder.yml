@@ -3,7 +3,7 @@ name: Run Staging Migration Reminder
 on:
   pull_request:
     branches:
-      - main
+      - staging
     types: [closed]
     paths:
       - '*.js'
